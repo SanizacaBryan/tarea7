@@ -1,5 +1,7 @@
 /*
-
+    Curso: 6-1 Programación para Redes
+    Autores: Sanizaca Bryan, Mirabá Washington Jiménez Anthony
+    Fecha:4-01-2021 
  */
 package ctruser;
 import java.io.BufferedReader;

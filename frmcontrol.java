@@ -1,7 +1,7 @@
 /*
     Curso: 6-1 Programación para Redes
     Autores: Sanizaca Bryan, Mirabá Washington Jiménez Anthony
-    Fecha:4-01-2021 
+    Fecha:10-01-2021 
  */
 package ctruser;
 import java.io.BufferedReader;
@@ -50,37 +50,47 @@ public class frmcontrol extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lbluser.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lbluser.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lbluser.setText("Usuario:");
-        jPanel1.add(lbluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, -1, -1));
+        lbluser.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lbluser, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 150, 30));
 
         lblpass.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        lblpass.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblpass.setText("Contraseña:");
-        jPanel1.add(lblpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 150, -1, -1));
+        lblpass.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.add(lblpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(423, 250, 150, 30));
 
+        txtuser.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtuser.setToolTipText("Agregar su usuario");
         txtuser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtuserActionPerformed(evt);
             }
         });
-        jPanel1.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 80, 180, -1));
+        jPanel1.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 180, 30));
 
-        txtpass.setText("jPasswordField1");
+        txtpass.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         txtpass.setToolTipText("Agregar su contraseña");
         txtpass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtpassActionPerformed(evt);
             }
         });
-        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 180, -1));
+        jPanel1.add(txtpass, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 250, 180, 30));
 
         btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Cancelar.jpg"))); // NOI18N
         btnCancelar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 270, 160, 60));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 320, 160, 60));
 
         btnIngresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Ingresar.jpg"))); // NOI18N
         btnIngresar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -89,12 +99,12 @@ public class frmcontrol extends javax.swing.JFrame {
                 btnIngresarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 270, 170, 60));
+        jPanel1.add(btnIngresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 320, 170, 60));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Usuario.jpg"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 380, -1));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 400, 310));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 790, 470));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 770, 480));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -114,8 +124,8 @@ public class frmcontrol extends javax.swing.JFrame {
             int i=0;
             String [] usuarios = null;  //Arreglo de tipo string 
             String linea;
-            sc = new Scanner (new File("C:\\Documentos\\usuarios.txt"));
-            File f = new File("C:/Documentos/usuarios.txt");
+            sc = new Scanner (new File("C:\\txt\\usuarios.txt"));
+            File f = new File("C:/txt/usuarios.txt");
             fr = new FileReader(f);
             BufferedReader br = new BufferedReader(fr);
             
@@ -135,8 +145,8 @@ public class frmcontrol extends javax.swing.JFrame {
             user = txtuser.getText();
             password= txtpass.getText();
             
-            seguridad s = new seguridad();
-            s.validarUsuario(usuarios, user, password, intentos);
+             seguridad s = new seguridad ();
+             s.validarUsuario(usuarios, user, password, intentos);
             
         } catch (FileNotFoundException ex) {
             Logger.getLogger(frmcontrol.class.getName()).log(Level.SEVERE, null, ex);
@@ -152,6 +162,10 @@ public class frmcontrol extends javax.swing.JFrame {
          
     
     }//GEN-LAST:event_btnIngresarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarActionPerformed
 
     /**
      * @param args the command line arguments
